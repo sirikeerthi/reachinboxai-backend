@@ -154,3 +154,7 @@ Set VITE_API_URL in frontend/.env to the backend's URL, e.g. http://localhost:30
 - Bull Board is protected with HTTP Basic Auth, not the app's JWT auth, since it is opened directly in a browser rather than called with an Authorization header.
 - Docker was not used - Postgres, Redis, and Elasticsearch were run natively, and the assignment itself marks Docker as recommended but not mandatory.
 
+## Known deployment issue
+
+- When deploying the backend to Render's free tier, outbound connections to the SMTP port (587) used for Ethereal Email get blocked by the platform, which surfaces as a connection timeout on send rather than a clear "blocked" error. This does not occur in local development, where outbound SMTP is unrestricted.
+- A working workaround for this is shown in the video demo.
